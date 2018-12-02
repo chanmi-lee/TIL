@@ -12,22 +12,31 @@ HTML에서는 몇가지 태그가 미리 정의되어 있으며, 일반적으로
 XHTML (XML + HTML)에서는 Self-Closing (ex- <br />)을 강제화 했지만, HTML5에서는 닫아주지 않아도 된다.
 
 
+* a : means anchor, HTML의 HyperText가 바로 이 태그를 의미
+* href : **H**yperText **Ref**erence 의 약자
 
-# DOCTYPE
+```
+<a href="https://www.advancedwebranking.com/html/" target="_blank" title="The average web page from top twenty Google results">
+```
+
+
+***
+
+## DOCTYPE
 HTML의 문서 규격을 표시하기 위해 사용되며, 문서 최상단에 위치한다. HTML, XHTML, HTML5의 세 가지 문서 유형이 존재하며, 유형에 따라 마크업 요소와 속성등을 처리하는 기준이 결정된다.
-```sh
+```
 <!DOCTYPE html>
 ```
 XHTML문서는 아래와 같은 DOCTYPE을 사용한다
-```sh
+```
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 ```
 
 문서형 정의(DTD, Document Type Definition)를 생략하는 경우, 웹 브라우저가 비표준모드로 렌더링되어 크로스 브라우징에 어려움을 겪는다.
 
+***
 
-
-# MIME (Multipart Internet Mail Extensions)
+## MIME (Multipart Internet Mail Extensions)
 a.k.a 콘텐츠 타입
 
 - HTTP Head 요소에 포함
@@ -38,7 +47,7 @@ a.k.a 콘텐츠 타입
 '/'로 구분된 두 개의 문자열인 타입과 서브타입으로 구분
 타입의 종류로는 text, image, audio, video, application 그리고 multipart가 있다.
 
-```sh
+```
 <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 ```
 text/html; charset=utf-8 로 전달되는 문서는 HTML 파일로 해석된다.
