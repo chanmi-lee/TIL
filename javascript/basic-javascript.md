@@ -71,9 +71,8 @@ var myObj = {
     + 상속되는 속성들은 ```prototype```이라는 생성자 객체에서 찾을 수 있다.
 
 
----
-
 #### Useful Links
 
 + [Mozilla - JavaScript 안내서](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide)
 + [OpenTutorials - JavaScript 사전](https://opentutorials.org/course/50)
++ [DOM Event](https://developer.mozilla.org/en-US/docs/Web/Events)
