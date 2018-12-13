@@ -57,6 +57,10 @@ sum(2,3); // 5
     + ``` objectName.propertyName ``` 과 같이 접근한다. (도트표기법)
     + null과 undefined를 제외한 모든 원시 타입도 객체로 취급. (즉, 원시타입에도 프로퍼티가 추가되며 객체로서의 특징을 갖는다)
   - Method: Object와 연관된 함수
+    + JavaScript에서 함수는 값이다.
+     - 다른 함수의 인자로 전달될 수도 (parameter)
+     - 함수의 리턴 값으로 사용될 수도 (like callback function)
+     - 배열의 값으로도 사용될 수도 있다.
 
 ```
 var myObj = {
@@ -70,6 +74,54 @@ var myObj = {
     + 상속을 제공하는 객체를 **ProtoType**
     + 상속되는 속성들은 ```prototype```이라는 생성자 객체에서 찾을 수 있다.
 
+---
+
+#### Scope
+- 유효범위, 즉 변수의 수명을 의미
+  + 전역변수
+  + 지역변수
+- JavaScript는 함수에 대한 유효범위만을 제공한다. (<-> 다른 많은 언어들이 블록단위({})에 대한 유효범위를 제공하는 것과 다른 점)
+
+```
+// JavaScript
+for (var i = 0; i < 1; i++) {
+  var name = 'Kate';
+}
+alert(name);  // return Kate
+```
+
+```
+// Java
+for (int i = 0; i < 10; i++) {
+  String name = "Kate";
+}
+System.out.println(name); // do not return anything
+```
+- JavaScript는 함수가 선언된 시점에서의 유효범위를 갖는다. 이를 정적 유효범위(static scoping) 혹은 렉시컬(lexical scoping)이라 한다.
+
+```
+var i = 10;
+
+function a() {
+  var i = 5;
+  b();
+}
+
+function b() {
+  document.write(i);
+}
+
+a();  // 5
+```
+
+
+---
+
+#### Events
+- capturing: event가 부모에서부터 발생하여 자식으로 전파되는 것
+  + ie 낮은 버전에서는 작동하지 않는다
+
+---
 
 #### Useful Links
 
