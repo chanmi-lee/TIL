@@ -187,7 +187,7 @@ public class BubbleSortExample {
     int temp = 0;
 
     for (int i = 0; i < len; i++) {
-      for (int j = 1; k < (len-1); j++) {
+      for (int j = 1; j < (len-1); j++) {
         if (arr[j-1] > arr[j]) {
           // swap elements
           temp = arr[j-1];
@@ -229,7 +229,7 @@ Array After Bubble Sort
 배열을 선형 탐색(linear scan)하며 가장 작은 원소를 배열 맨 앞으로 보낸다 (맨 앞에 있던 원소와 자리를 바꾼다).
 
 ```
-public clas SelectionSortExample {
+public class SelectionSortExample {
   public static void main(String[] args) {
     int[] arr = {3,2,30,45,230,1,503};
     int temp = 0;
@@ -265,7 +265,7 @@ public class QuickSortExample {
       quickSort(arr, left, index - 1);
     }
     if (index < right) {    // 오른쪽 절반 정렬
-
+      quickSort(arr, index, right);
     }
   }
 
