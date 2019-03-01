@@ -146,6 +146,98 @@ public void readFrom(int n, int[] data, Scanner in) {
 
 ---
 
+> Q8. 순차탐색
+
+배열의 앞에서부터 target 변수값과 일치하는 값을 찾아 반환한다.
+
+```
+public int search(int[] data, int begin, int end, int target) {
+  if (begin > end) {
+    return -1;
+  } else if (target == items[begin]) {
+    return begin;
+  } else {
+    return search(data, begin+1, end, target);
+  }
+}
+```
+
+배열을 반으로 나눠 찾는 경우엔 아래와 같다
+
+```
+public int search(int[] data, int begin, int end, int target) {
+  if (begin > end) {
+    return -1;
+  } else {
+    int middle = (begin+end)/2;
+    if (data[middle] == target) return middle;
+
+    int idx = search(data, begin, middle-1, target);
+    if (idx != -1) {  // 앞에서 찾은 경우
+       return idx;
+    } else {  // 뒤에서 찾은 경우
+      return search(data, middle+1, end, target);
+    }
+  }
+}
+```
+
+---
+
+> Q9. 최대값 찾기
+
+배열의 첫번째 값과 나머지 값을 비교하여 찾는 방법
+```
+public int findMax(int[] data, int begin, int end) {
+  if (begin == end) {
+    return data[begin];
+  } else {
+    return Math.max(data[begin], findMax(data, begin+1, end));
+  }
+}
+```
+
+혹은, 배열을 반으로 나눠 찾는 방법도 있다.
+
+```
+public int findMax(int[] data, int begin, int end) {
+  if (begin == end) {
+    return data[begin];
+  } else {
+    int middle = (begin+end)/2;
+    int max1 = findMax(data, begin, middle);
+    int max2 = findMax(data, middle+1, end);
+    return Math.max(max1, max2);
+  }
+}
+```
+
+---
+
+> Q10. Binary Search
+
+기본적으로 배열에 데이터가 크기순 혹은 오름차순으로 정렬되어 있을 때 적용할 수 있는 방법이다.
+
+```
+public static int binarySearch(String[] items, String target, int begin, int end) {
+  if (begin > end) {  // 빈 배열일 때
+    return -1;
+  } else {
+    int middle = (begin+end)/2;
+    int compResult = target.compareTo(items[middle]);
+    if (compResult == 0) {
+      return middle;
+    } else if (compResult < 0) {
+      return binarySearch(items, target, begin, middle-1)
+    } else {
+      return binarySearch(items, target, middle+1, end);
+    }
+  }
+}
+```
+
+---
+
 ##### Tips
 - **Recursion vs Iteration**
   - 모든 순환함수(Recursion)은 반복문(Iteration)으로 변경 가능하다
