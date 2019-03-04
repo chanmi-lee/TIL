@@ -174,9 +174,13 @@ FIFO (First-In-First-Out) like 매표소 줄
 
 > Q3. Algorithm
 
-**Bouble Sort**
+**Bubble Sort**
 
 *서로 인접한 두 원소를 검사하여 정렬하는 알고리즘*
+
+> 실행시간 : O(n<sup>2</sup>) = (n-1)+(n-2)+...+2+1
+
+*최악, 최선, 평균 모두 Q(n<sup>2</sup>)*
 
 배열의 첫 원소부터 순차적으로 진행하며, 현재 원소가 그 다음 원소의 값보다 크면 두 원소를 바꾸는 작업을 반복한다.
 
@@ -224,7 +228,13 @@ Array After Bubble Sort
 1 2 3 30 45 230 503
 ```
 
+---
+
 **Selection sort**
+
+> 시간복잡도 T(n) = O(n<sup>2</sup>) = (n-1)+(n-2)+...+2+1
+
+*최악, 최선, 평균 모두 Q(n<sup>2</sup>)*
 
 배열을 선형 탐색(linear scan)하며 가장 작은 원소를 배열 맨 앞으로 보낸다 (맨 앞에 있던 원소와 자리를 바꾼다).
 
@@ -246,6 +256,8 @@ public class SelectionSortExample {
   }
 }
 ```
+
+---
 
 **Quick sort**
 
@@ -293,6 +305,57 @@ public class QuickSortExample {
     int temp = arr[left];
     arr[left] = arr[right];
     arr[right] = temp;
+  }
+}
+```
+
+---
+
+**Merge Sort**
+
+분할정복법이라는 전략을 사용하는 알고리즘
+* 분할: 해결하고자 하는 문제를 작은 크기의 동일한 문제들로 분할 (divide)
+* 정복: 각각의 작은 문제를 순환적으로 해결 (recursively sort)
+* 합병: 작은 문제의 해를 합하여 (merge) 원래 문제에 대한 해를 구함
+
+ex) 주어진 배열의 최대값을 구해야 할 때, 반으로 나눠 (**분할**) 각각 최대값을 찾은 후 (**정복**) 값을 비교하여 최대값을 도출 (**합병**)
+
+```
+public class MergeSortExample {
+  void mergeSort(int[] arr, int p, int r) {
+    if (p < r) {
+      int middle = (p+r)/2;
+
+      mergeSort(arr, p, middle);
+      mergeSort(arr, middle+1, r);
+      merge(arr, p, middle, r);
+    }
+  }
+
+  void merge(int[] data, int p, int m, int r) {
+    int i = p, j = m+1, k = p;
+    int[] tmp[data.length()];
+
+    while (i <= q && j <= r) {
+      if (data[i] <= data[j]) {
+        tmp[k++] = data[i++];
+      } else {
+        tmp[k++] = data[j++];
+      }
+    }
+
+    while (i <= q) {
+      // 앞의 배열에만 원소가 남아있을 때
+      tmp[k++] = data[i++];
+    }
+    while (j <= r) {
+      // 뒤의 배열에만 원소가 남아있을 때
+      tmp[k++] = data[j++];
+    }
+
+    for (int i = p; i <= r; i++) {
+      data[i] = tmp[i];
+    }
   }
 }
 ```
