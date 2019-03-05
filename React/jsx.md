@@ -90,7 +90,7 @@ Failed o compile.
 Syntax error: Adjacent JSX elements must be wrapped in an enclosing tag.
 ```
 
-혹은 Fragment 컴포넌트로 감싸고 여러 요소를 렌더링하는 것도 가능하다.
+혹은 Fragment 컴포넌트로 감싸고 여러 요소를 렌더링하는 것도 가능하다. (이 기능은 v16.2부터 도입)
 
 ```
 import React, { Component, Fragment } from 'react';
@@ -137,5 +137,117 @@ export default App;
 **JSX 내부의 자바스크립트 표현식에선 if문을 사용할 수 없다**
 
 조건에 따라 다른 것을 렌더링해야 할 때에는,
-- JSX 밖에서 if문을 사용하여 작업하거나
-- {} 안에 조건부 (삼항) 연산자를 사용한다
+- **JSX 밖에서 if문을 사용** 하여 작업하거나 (*JSX 내부에서 if문을 사용한다면 [IIFE](https://developer.mozilla.org/ko/docs/Glossary/IIFE)(즉시 실행 함수 표현)을 통해 가능하다*)
+- {} 안에 **조건부 (삼항) 연산자를 사용** 한다
+
+```
+import React, { Component } from 'react';
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        {
+          1 + 1 === 2
+          ? (<div>Correct!</div>)
+          : (<div>Wrong! Try it again :(</div>)
+        }
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+조건이 true일 때와 false일 때 각각 다른 것을 보여주고자 사용되는 삼항연산자와 달리, **AND 연산자를 사용** 해 단순히 true일 때만 보여주는 방법도 있다.
+
+```
+import React, { Component } from 'react';
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        {
+          1 + 1 === 2 && (<div>Correct!</div>)
+        }
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+JSX 안에서 if문을 사용한다면, IIFE를 사용한다:
+
+```
+import React, { Component } from 'react';
+
+class App extends Component {
+  render() {
+    const value = 1;
+    return (
+      <div>
+      {
+        (() => {
+          if (value === 1) return (<div>One</div>);
+          if (value === 2) return (<div>Two</div>);
+          if (value === 3) return (<div>Three</div>);
+        })()
+      }
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+IIFF는 크게 두 부분으로 구성된다.
+* 첫 번째 괄호()로 둘러싸인 익명 함수 (Anonymous Function)
+  * IIFE 내부에서 정의된 변수는 외부로부터의 접근이 불가능하다
+  ```
+    (function() {
+      var aName = "Kate";
+    })();
+
+    aName // throws "Uncaught RefereneError: aName is not defined";
+  ```
+* 두 번째 괄호()는 즉시 실행 함수를 생성한다
+  * IIFE를 변수에 할당하면 IIFE 자체는 저장되지 않고, 함수가 실행된 결과만 저장된다
+  ```
+    var result = (() => {
+        var name = "Kate";
+        return name;
+      })();
+      result; // "Kate";
+  ```
+
+또한 여기에서 [화살표 함수](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Functions/%EC%95%A0%EB%A1%9C%EC%9A%B0_%ED%8E%91%EC%85%98)가 사용되었는데, 이는 this, arguments, super 개념이 없는 익명 함수이다.
+
+---
+
+> 주석
+
+```
+import React, { Component } from 'react';
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        {/* 주석은 이렇게 */}
+        <h1
+          // 혹은 태그 사이에
+        >Hello React</h1>
+      </div>
+    );
+  }
+}
+
+export default App;
+```
+
+```{/* ... */}``` 사이에 넣거나 태그 사이에 넣을 수 있다.

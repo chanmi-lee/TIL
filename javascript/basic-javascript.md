@@ -114,6 +114,37 @@ function b() {
 a();  // 5
 ```
 
+>  **const, let and var**
+
+const와 let은 ES6에 도입된 키워드로 기존 자바스크립트의 var와 비슷하지만 작동 방식에 있어 scope가 다르다.
+
+var은 scope가 **함수** 단위:
+
+```
+function foo() {
+  var a = 'hello';
+  if (true) {
+    var a = 'good bye';
+    console.log(a); // good bye
+  }
+  console.log(a);   // good bye
+}
+```
+
+반면 const와 let은 scope가 **블록** 단위:
+
+```
+function foo() {
+  let a = 'hello';
+  if (true) {
+    let a = 'good bye';
+    console.log(a); // good bye
+  }
+  console.log(a);   // hello
+}
+```
+
+*값을 선언 후 바꿔야 할 땐 let, 한 번 선언하고 바뀌지 않는 값을 설정할 땐 const를 사용한다.*
 
 ---
 
