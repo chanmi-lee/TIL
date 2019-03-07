@@ -4,26 +4,32 @@
   + 웹브라우저 < 사용자 < 웹페이지 저자
   + tag selector < class selector < id selector < style attribute ( < !important; )
 
-
-- 선택자, 선언, 속성, ...
-
-```
-a { // selector (선택자)
-  color: red; // Declaration (선언)
-  // property : value;
-}
-```
-
 디자인하려는 태그를
 1. 선택하고 (선택자)
 2. 선택한 대상에게 효과를 준다 (선언)
 
 ![](http://www.pxleyes.com/blog/wp-content/uploads/2010/03/css-cheatsheet.png)
 
+---
 
-- Link: [상속하는 속성과 하지않는 속성](https://www.w3.org/TR/CSS21/propidx.html)
+![](https://www.w3schools.com/css/selector.gif)
 
-- psuedo class selector : 클래스 선택자는 아니지만, element의 상태에 따라 마치 클래스 선택자처럼 여러 element를 선택할 수 있다는 점에서 붙은 이름
+> **Rule Set**
+
+*HTML 페이지 안의 특정 요소들을 어떻게 렌더링 할 것인지 브라우저에게 알려주는 CSS 문장*
+
+{ } (semicolon) 앞 부분 모두가 선택자(selector) 로 다음과 같은 종류가 있다.
+
+| 종류 | 예제 | 의미 |
+| --- | --- | --- |
+| universial selector | * | HTML페이지 내부의 모든 태그를 선택 |
+| id selector | #firstname | id=firstname인 태그를 선택 |
+| class selector | .intro | class=intro인 태그를 선택
+| element selector | p, div | 태그명이 p, div인 특정 태그를 선택 |
+| attribute selector | [target=_blank] | target 속성값이 _black인 특정 태그를 선택 |
+| Pseudo-Classes selector | a:visited, a:focus | a:visited 선택자는 이미 방문한 적이 있는 a 태그를, a:focus 선택자는 해당 요소에 초점이 맞춰져 있는 상태일 때 적용 |
+
+* **가상 클래스(Pseudo-Classes)** 는 웹 문서의 소스에는 실제로 존재하지 않지만 필요에 의해 임의로 가상의 선택자를 지정하여 사용하는 것을 의미한다*
 
 ```
 a:link {  /* 방문한 적이 없는 링크 */
@@ -39,6 +45,10 @@ a:active {  /* 마우스를 클릭했을 때 */
     color: green;
 }
 ```
+
+> **[Tip]** "@" 키워드로 시작하는 문장은 Rule Set이 아닌 At-Rule으로 선택자가 아니다. (하단 Media Query 부분 참고)
+
+---
 
 - Web font : 사용자가 가지고 있지 않은 폰트를 웹 페이지에서 사용하기 위한 방법으로, 폰트를 서버에서 다운로드하는 방식
   + Link: [Google web fonts](https://fonts.google.com/?authuser=1)
@@ -115,3 +125,11 @@ Pre-req) node.js install
 ```sh
 > clean-css -o minify.min.css minify.css
 ```
+
+
+---
+
+References
+
+* [W3SCHOOL - CSS Syntax and Selector](https://www.w3schools.com/css/css_syntax.asp)
+* Link: [상속하는 속성과 하지않는 속성](https://www.w3.org/TR/CSS21/propidx.html)
