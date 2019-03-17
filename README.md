@@ -25,6 +25,9 @@ Today I learned :memo:
 > **CSS**
   - [Basic CSS](https://github.com/chanmi-lee/TIL/blob/master/css/basic-css.md)
 
+> **Git**
+  - [Useful tools](https://github.com/chanmi-lee/TIL/blob/master/git/useful-tools.md)
+
 > **Tips**
   - [Internet](https://github.com/chanmi-lee/TIL/blob/master/Tips/Internet.md)
   - [Rendering](https://github.com/chanmi-lee/TIL/blob/master/Tips/Rendering.md)
