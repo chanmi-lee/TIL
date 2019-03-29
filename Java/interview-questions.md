@@ -359,3 +359,60 @@ public class MergeSortExample {
   }
 }
 ```
+
+---
+
+> Q4. final vs finalize vs finally
+
+| final | finalize | finally |
+| --- | --- | --- |
+| 변수, 메서드 또는 클래스가 **변경 불가능**하도록 만든다 | GC(Garbage Collector)가 더 이상의 참조가 존재하지 않는 객체를 삭제할 때 사용된다 | try/catch 구문이 종료될 때 항상 실행될 코드 블록을 정의하는데 사용된다 |
+
+final keyword는 사용되는 문맥에 따라 다르다
+
+* *final* fileds, parameters, and variables
+: **상수를 정의** 할 때 사용한다
+
+```
+public class Parent {
+  int field1 = 1;
+  final int field2 = 2; // 상수 정의, 선언 시 반드시 초기값을 지정해야 한다
+
+  Parent() {
+    field1 = 2; // OK
+    field2 = 3; // Compilation error : 한 번 정의되면 값을 변경할 수 없다
+  }
+}
+```
+
+* *final* method
+: **해당 메서드는 더 이상 오버라이딩 할 수 없음** 을 의미한다
+
+```
+public class Child extends Parent {
+  @Override
+  void method1(int arg1, int arg2) {
+    // OK
+  }
+
+  @Override
+  final void method2() {
+    // Compilation error
+  }
+}
+```
+
+* *final* class
+: **클래스를 상속받을 수 없음** 을 의미한다
+
+```
+public final class Child extends Parent {
+  // ...
+}
+```
+
+```
+public class GrandChild extends Child {
+  // Compilation error
+}
+```
