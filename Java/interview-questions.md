@@ -127,37 +127,28 @@ LIFO(Last-In-First-Out)에 따라 자료를 배열
 *같은 방향에서 item을 추가/삭제한다는 조건 하에 LinkedList로 구현할 수도 있다.*
 
 ```
-public class MyStack {
-  private static class StackNode {
-    private T data;
-    private StackNode next;
-    public StackNode(T data) {
-      this.data = data;
-    }
+class Stack {
+  int top;
+  int[] stack;
+  int size;
+
+  public Stack(int size) {
+    top = -1;
+    stack = new int[size];
+    this.size = size;
   }
 
-  private StackNode top;
-  public T pop() {
-    if (top == null) throw new EmptyStackException();
-    T item = top.data;
-    top = top.next;
-    return item;
+  public int peek() {
+      return stack[top];
   }
 
-  public void push(T item) {
-    StackNode t = new StackNode(item);
-    t.next = top;
-    top = t;
+  public int push (int value) {
+    stack[top++] = value;
   }
 
-  public T peek() {
-    if (top == null) throw new EmptyStackException();
-    return top.data;
-  }
-
-  public boolean isEmpty() {
-    return top == null;
-  }
+  public int pop () {
+    return stack[top--];
+  }  
 }
 ```
 
@@ -173,6 +164,36 @@ FIFO (First-In-First-Out) like 매표소 줄
 * * *
 
 > Q3. Algorithm
+
+**Binary Search**
+
+```
+public class BinarySearch {
+  public static void main (String[] args) {
+    List<Integer> list = new ArrayList<>();
+
+    System.out.println(binarySearch(list));
+  }
+
+  public static boolean binarySearch(final List<Integer> numbers, Integer value) {
+    if (numbers == null || numbers.isEmpty()) {
+      return false;
+    }
+
+    Integer comparsion = numbers.get(numbers.size() / 2);
+
+    if (value.equals(comparsion)) return true;
+
+    if (value < comparsion) {
+      return binarySearch(numbers.subList(0, numbers.size() / 2), value);
+    } else {
+      return binarySearch(numbers.subList(numbers.size() / 2, numbers.size()), value);
+    }
+  }
+}
+```
+
+---
 
 **Bubble Sort**
 
@@ -416,3 +437,37 @@ public class GrandChild extends Child {
   // Compilation error
 }
 ```
+
+* * *
+
+OOP
+
+> 1. Abstraction (추상화)
+
+공통된 특징, 즉 추상적 특징을 파악하여 하나의 개념(집합)으로 다루는 것을 의미
+
+```
+switch (carType)
+case '아우디':
+case '벤츠':
+case 'BMW':
+...
+end switch()
+```
+
+```
+void changeEngineOil (Car c) {
+  c.changeEngineOil();
+}
+```
+
+> 2. Encapsulation (캡슐화)
+
+**정보은닉 (information hiding)** 을 통해 높은 응집도와 낮은 결합도를 갖도록 한다.
+- 응집도(cohesion): 클래스나 모듈 안의 요소들이 얼마나 밀접하게 관련되어 있는지 나타낸다
+- 결합도(Coupling): 어떤 기능을 실행하는데 다른 클래스나 모듈들에게 얼마나 의존적인지를 나타낸다
+
+> 3. Polymorphism (다형성)
+
+서로 다른 클래스의 객체가 각자의 방식으로 동작하는 방식을 의미한다
+일반적으로 상속과 연계되어 동일한 부모로부터 상속받은 메소드를 달리 정의하는 오버라이딩과 연관지어 생각할 수 있다.
