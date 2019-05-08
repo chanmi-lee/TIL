@@ -72,6 +72,16 @@ public static int getSquareValue(int i) {
 }
 ```
 
+> Caution
+
+기본 타입과 래퍼 타입 사이의 변환은 예외 하나만 제외하고 거의 신경 쓸 필요가 없다.
+
+==와 != 연산자는 객체의 내용이 아니라 객체 참조를 비교한다.
+
+즉, 조건 `if (numbers.get(i) == numbers.get(j))`는 인덱스 i와 j에 있는 두 숫자가 같은지 검사하지 않는다.
+따라서, *문자열처럼 래퍼 객체로 eqauls 메서드를 호출하여 객체를 비교해야 한다* 는 점을 기억하자.
+
+
 ---
 
 ##### 3 main types of references:
@@ -93,3 +103,70 @@ public static int getSquareValue(int i) {
     - In previous example, when we made a prime referenec null, the prime object will be GC in the next GC cycle, as there is no other strong reference pointing to it.
 
 ** WeakHashMap as an efficient memory cache
+
+
+---
+
+##### 4 Initialization block
+
+There are two types of Initialization block:
+
+* instance initialization blocks
+* static initialization blocks.
+
+```
+public class Test() {
+    static int id;
+    private String name = "";
+    private int age;
+    
+    // static Initialization block 
+    // Runs once (when the class is initialized)
+    static {
+        System.out.println("Static initialization block");
+        Random generator = new Random();
+        id = 1 + generator.nextInt(1_000_000);
+    }
+    
+    // Instance initialization block
+    // Runs each time you instantiate an object
+    {
+        System.out.println("Instance initialization block");
+        age = 20;
+    }
+    
+    public Test() {
+        System.out.println("Constructor");
+    }
+    
+    public static void main(String[] args) {
+        new Test();
+        new Test();
+    }
+}
+```
+
+Output
+```
+Static initalization
+Instance initialization
+Constructor
+Instance initialization
+Constructor
+```
+
+> 실행순서
+
+- static initialization blocks of super classes
+- static initialization blocks of the class
+- instance initialization blocks of super classes
+- constructors of super classes
+- instance initialization blocks of the class
+- constructor of the class.
+
+
+---
+
+Ref
+
+* [Stackoverflow - what-is-an-initialization-block?](https://stackoverflow.com/questions/3987428/what-is-an-initialization-block)
