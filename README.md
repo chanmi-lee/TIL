@@ -9,6 +9,7 @@ Today I learned :memo:
   - [Recursion-Questions](https://github.com/chanmi-lee/TIL/blob/master/Java/recursion-questions.md)
   - [Recursion-Advanced](https://github.com/chanmi-lee/TIL/blob/master/Java/recursion-advanced.md)
   - [Heap Sort](https://github.com/chanmi-lee/TIL/blob/master/Java/heap-sort.md)
+  - [Exception](https://github.com/chanmi-lee/TIL/blob/master/Java/Exception.md)
 
 > **React**
   - [Basic React](https://github.com/chanmi-lee/TIL/blob/master/React/basic-react.md)
@@ -27,6 +28,9 @@ Today I learned :memo:
 
 > **Git**
   - [Useful tools](https://github.com/chanmi-lee/TIL/blob/master/Git/useful-tools.md)
+
+> **DB**
+  - [DBMS](https://github.com/chanmi-lee/TIL/blob/master/DB/DBMS.md)
 
 > **Tips**
   - [Internet](https://github.com/chanmi-lee/TIL/blob/master/Tips/Internet.md)
