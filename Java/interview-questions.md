@@ -423,6 +423,37 @@ public class Child extends Parent {
 }
 ```
 
+> Java API에 있는 final method의 좋은 예는 **Object 클래스의 getClass 메서드** 이다. 서브클래스 객체가 자신이 속한 클래스를 속일 수 있게 하는 것은 좋지 않으므로 이 메서드는 절대 변경될 수 없게 만들어 놓았다.
+
+```
+    public final Class<?> getClass()
+```
+
+```
+    Number n = 0; 
+    Class<? extends Number> c = n.getClass();
+
+    Object obj = System.out;
+    Class<?> cl = obj.getClass();
+
+    System.out.println("This object is an instance of " + cl.getName());
+
+    String className = "java.util.Scanner";
+    cl = Class.forName(className);
+        // java.util.Scanner 클래스를 기술하는 객체다.
+    cl = java.util.Scanner.class;
+    System.out.println(cl.getName());
+    Class<?> cl2 = String[].class; // String[] 배열 타입을 기술한다.
+    System.out.println(cl2.getName());
+    System.out.println(cl2.getCanonicalName());
+    Class<?> cl3 = Runnable.class; // Runnable  인터페이스를 기술한다. 
+    System.out.println(cl3.getName());
+    Class<?> cl4 = int.class; // int 타입을 기술한다.
+    System.out.println(cl4.getName());
+    Class<?> cl5 = void.class; // void 타입을 기술한다.
+    System.out.println(cl5.getName());
+```
+
 * *final* class
 : **클래스를 상속받을 수 없음** 을 의미한다
 
@@ -437,6 +468,24 @@ public class GrandChild extends Child {
   // Compilation error
 }
 ```
+
+* * *
+
+> Q5. Type Parameter Naming Convention
+
+A type variable can be any **non-primitive type** you specify: *any class type, any interface type, any array type, or even another type variable.*
+
+By convention, type parameter names are single, uppercase letters.
+
+The most commonly used type parameter names are:
+
+* E - Element (used extensively by the Java Collections Framework)
+* K - Key
+* N - Number
+* T - Type
+* V - Value
+* S,U,V etc. - 2nd, 3rd, 4th types
+
 
 * * *
 
