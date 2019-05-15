@@ -2,12 +2,13 @@
 
 #### Type
 > Primitive Type (기본자료형)
-    - Boolean
-    - Numeric
-      + Integral
+
+- Boolean
+- Numeric
+    - Integral
         - Integer: short, int, long
         - Floating Point: float, double
-      + Character: char
+    - Character: char
 
 *primitive type은 반드시 사용하기 전에 선언(Declared) 되어야 한다*
 
@@ -16,20 +17,20 @@
 ---
 
 > Reference Type (참조 자료형)
-    - Interface (annotation을 포함)
-    - array
-    - class (enum(열거자료형)을 포함)
-      + class의 멤버로는 field, method, member class, member interface 등이 있다.
 
+- Interface (annotation을 포함)
+- array
+- class (enum(열거자료형)을 포함)
+  - class의 멤버로는 field, method, member class, member interface 등이 있다.
 
-*기본적으로 ```java.lang.Object```를 상속받는다.*
+*기본적으로 `java.lang.Object`를 상속받는다.*
 
 ** ref)**
 
 String Class
 - reference type에 속하지만 기본적인 사용은 primitive type처럼 사용된다
 - 불변(immutable) 객체
-- 기본형 비교는 ```==``` 연산자를 사용하나 (identity comparison), String 객체간의 비교는 ```.equals()``` 메소드를 사용
+- 기본형 비교는 `==` 연산자를 사용하나 (identity comparison), String 객체간의 비교는 `.equals()` 메소드를 사용
 
 Wrapper Class
 - primitive type을 class로 감싼 형태
