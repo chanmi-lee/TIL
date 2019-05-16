@@ -135,7 +135,99 @@ public class Person {
 
 ---
 
+> Web-bind annotations
+
+- @RequestMapping
+  - @PostMapping: Shortcut for @RequestMapping(method = RequestMethod.POST)
+  - @GetMapping: @RequestMapping(method = RequestMethod.GET)
+  - @PutMapping: @RequestMapping(method = RequestMethod.PUT)
+  - @DeleteMapping: @RequestMapping(method = RequestMethod.DELETE)
+  - @PatchMapping: @RequestMapping(method = RequestMethod.PATCH)
+  
+```
+@Data
+public class Product {
+  
+  @NotNull(message = "product Id is required")
+  private String prodId;
+  
+  @NotNull
+  private String name;
+  
+  @NotNull
+  private String type;
+  
+  @NotNull
+  private String useYn;
+
+  ...
+}
+```
+
+```
+@RestController // conbines @Controller and @ResponseBody
+@RequestMapping(value = "/products", method = RequestMethod.POST)
+public class ProductController {
+  
+  @Autowired
+  private ProductService productService;
+  
+  @RequestMapping(value = "/getProductList")
+  public ResponseEntity<ProductInfoOut> getProductList(@RequestBody ProductInfoIn in) throws Exception {
+    ProductOut result = productService.getProductList(in);
+    return ResponseEntity<ProductInfoOut>(result, HttpStatus.OK);
+  }
+}
+```
+  
+- @PathVariable: Maps a method argument to a URI template variable
+```
+@RequestMapping("/{id}")
+Product getProduct(@PathVariable long id) {
+    // ...
+}
+```
+
+- @RequestParam: Maps HTTP request parameters to method arguments
+```
+Product getProductByProdCd(
+    @RequestParam("prodCd") String prodCd
+    , @RequestParam(value = "useYN", required = false) String useYN
+    , @RequestParam(value = "prodCnt", required = false, defaultValue = 1) int prodCnt) {
+  
+}
+```
+
+- @RequestBody: Maps the body of the HTTP request (body) to an object
+```
+@PostMapping("/saveMappingProduct")
+void saveProduct(@RequestBody Product product) {
+  //...
+}
+```
+
+- @RequestHeader: Get HTTP request header info
+```
+@RequestMapping(value = "/**")
+public String redirect(@RequestHeader("User-Agent") String userAgent, HttpServletRequest request) {
+  String versionCheckForRedirect = versionCheck(userAgent);
+  if (versionCheckForRedirect.indexOf("redirect") > -1) {
+    return versionCheckForRedirect;
+  }
+  
+  String redirectUrl = redirectUrl(userAgent, request);
+  if (redirectUrl.indexOf("redirect") > -1) {
+    return redirectUrl;
+  }
+  
+  return "forward:/home";
+}
+```
+
+---
+
 Ref
 - [Pre-defined Java Annotations](https://docs.oracle.com/javase/tutorial/java/annotations/predefined.html)
 - [Overview of Java Built-in annotations](https://www.baeldung.com/java-default-annotations)
 - [Custom annotations in Java](https://www.baeldung.com/java-custom-annotation)
+- [Spring MVC Annotations](https://www.baeldung.com/spring-mvc-annotations)
