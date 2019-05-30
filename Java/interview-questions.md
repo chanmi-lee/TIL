@@ -489,7 +489,7 @@ The most commonly used type parameter names are:
 
 * * *
 
-OOP
+> Q6. OOP
 
 > 1. Abstraction (추상화)
 
@@ -520,3 +520,44 @@ void changeEngineOil (Car c) {
 
 서로 다른 클래스의 객체가 각자의 방식으로 동작하는 방식을 의미한다
 일반적으로 상속과 연계되어 동일한 부모로부터 상속받은 메소드를 달리 정의하는 오버라이딩과 연관지어 생각할 수 있다.
+
+
+* * *
+
+> Q8. Interface vs Abstract Class
+
+**인터페이스**는 이를 구현(implements) 하는 모든 클래스에 대해 특정한 메서드가 반드시 존재하도록 강제하는 역할
+즉, *구현 객체가 같은 동작을 한다는 것을 보장하기 위한 목적*으로 사용된다.
+
+클래스가 아니고 *다중상속 (좀 더 정확하게는 다중 구현)*이 가능하다.
+
+Java8부터는 인터페이스도 `default` 키워드를 통해 구현체를 가질 수 있다
+
+```
+interface Shape {
+  void moveTo(double axisX, double axisY);  // 인터페이스에서는 abstract 생략 가능하다 (기본)
+}
+```
+
+**추상클래스**는 여러 클래스들의 공통점을 찾아 추상화시켜 사용하기 위해 사용된다
+즉, *상속(extends)을 받아서 기능을 확장시키는데 목적*이 있다
+
+`abstract` 키워드와 함께 선언된 클래스로 *다중상속*이 불가하다
+
+```
+abstract class Shape {
+  abstract void moveTo(double axisX, double axisY);
+}
+```
+
+
+> 공통점 (Java 8 기준)
+
+- 인터페이스와 추상클래스를 인스턴스화 하는 것은 불가능
+- 구현부가 있는 메소드와 없는 메소드를 모두 가질 수 있다는 점에서 유사하다
+
+> 차이점
+
+- 인터페이스에서 모든 변수는 기본적으로 `public static final`이며, 모든 메소드는 `public abstract`
+- 추상클래스에서는 `static` 혹은 `final`이 아닌 필드를 지정할 수 있고, `public`, `protected`, `private` 메소드를 가질 수 있다
+- 인터페이스는 여러 개의 인터페이스를 다중 구현할 수 있지만, 추상클래스는 다중 상속이 불가능하다
