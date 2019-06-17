@@ -32,6 +32,20 @@ http://www.google.com/search/?q=<script>alert(document.cookie)</script>&x=0&y=0
 저장/반사 XSS 공격의 경우, 서버 측 애플리케이션 취약점으로 인해 응답 페이지에 악성 스크립트가 포함되어 브라우저로 전달되면서 공격하는 것인 반면 해당 경우는 서버와 관계없이 브라우저에서 발생하는 것이 차이점이다
 
 
+:bulb: How to protect XSS?
+
+`<meta>`의 http-equiv은 http header의 이름을 값으로 가질 수 있다.
+해당 속성의 값으로 server나 User agent의 작동 방식을 변경할 수 있다.
+
+- `content-security-policy` 값을 이용해 현재 페이지에 대한 [Content Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy) 을 정의할 수 있다. Content Policy는 허용된 server origin과 script endpoints를 명시하므로써 XSS 공격을 막는것을 돕는다.
+
+ex)
+
+```
+<!-- 인라인 JavaScript의 실행과 모든 플러그인을 차단하여 XSS 공격에 대비 -->
+<meta http-equiv="Content-Security-Policy" content="script-src 'self'; object-src 'none'">
+```
+
 ---
 
 ### SQL Injection
@@ -60,3 +74,4 @@ Ref
 - [KISA - XSS 공격 종류 및 대응 방법](http://www.kisa.or.kr/uploadfile/201312/201312161355109566.pdf)
 - [Wiki pedia - SQL Injection](https://ko.wikipedia.org/wiki/SQL_%EC%82%BD%EC%9E%85)
 - [W3C - SQL Injection](https://www.w3schools.com/sql/sql_injection.asp)
+- [Content Security Policy](https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP)
