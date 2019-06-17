@@ -197,6 +197,28 @@ Product getProductByProdCd(
   
 }
 ```
+---
+:bulb: @PathVariable vs @RequestParam
+
+> Even though `@PathVariable` and `@RequestParam` are both used **to extract values from the URL**, their usage is largely determined by how a site is designed.
+The `@PathVariable` is used **for data passed in the URI (e.g. RESTful web services)** while `@RequestParam` is used **to extract the data found in query parameters.**
+
+If we head chosen to use query parameters, our URL would be:
+
+`http://localhost:8080/orders?id=100`
+
+This would be implemented in a controller method like the following:
+
+```
+@GetMapping("/orders")
+@ResponseBody
+public String getOrder(@RequestParam(value = "id", required = true) String id) {
+  return "Order ID: " + id;
+}
+```
+
+> So, these annotations can be mixed together inside the same controller.
+---
 
 - @RequestBody: Maps the body of the HTTP request (body) to an object
 ```
