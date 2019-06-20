@@ -248,6 +248,48 @@ public String redirect(@RequestHeader("User-Agent") String userAgent, HttpServle
 
 ---
 
+> @ Bean vs @Component
+
+- @Bean : setter나 builder 등을 통해서 사용자가 프로퍼티를 변경해서 생성한 인스턴스를 스프링에게 관리하라고 맡기는 것
+
+```
+@Target({ElementType.METHOD, ElementType.ANNOTATION_TYPE})
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+public @interface Bean {
+  @AliasFor("name")
+  String[] value() default {};
+  
+  @AliasFor("value")
+  String[] name() default {};
+  
+  @Deprecated
+  Autorwire autowire() default Autowire.NO;
+  
+  boolean autowireCandidate() default true;
+  
+  String initMethod() default "";
+  
+  String destroyMethod() default "(inferred)";
+}
+```
+> @Target이 METHOD & ANNOTATION_TYPE으로 지정
+
+- @Component : 클래스를 스프링에게 알아서 인스턴스 생성한 후에 bean으로 등록하라고 맡기는 것
+
+```
+@Target(ElementType.TYPE)
+@Retention(RetentionPolicy.RUNTIME)
+@Documented
+public @interface Component {
+  String value() default "";
+}
+```
+
+> @Target이 TYPE으로 지정, 즉 Class annotation
+
+---
+
 Ref
 - [Pre-defined Java Annotations](https://docs.oracle.com/javase/tutorial/java/annotations/predefined.html)
 - [Overview of Java Built-in annotations](https://www.baeldung.com/java-default-annotations)
