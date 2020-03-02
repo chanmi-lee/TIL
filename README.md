@@ -18,6 +18,7 @@ Today I learned :memo:
   - [Basic React](https://github.com/chanmi-lee/TIL/blob/master/React/basic-react.md)
   - [Add React in One Minute](https://github.com/chanmi-lee/TIL/blob/master/React/add-react-in-one-minute.md)
   - [JSX](https://github.com/chanmi-lee/TIL/blob/master/React/jsx.md)
+  - [Props and State](https://github.com/chanmi-lee/TIL/blob/master/React/Props-and-State.md)
 
 > **JavaScript**
   - [Basic JavaScript](https://github.com/chanmi-lee/TIL/blob/master/javascript/basic-javascript.md)
