@@ -35,6 +35,7 @@ Today I learned :memo:
 
 > **DB**
   - [DBMS](https://github.com/chanmi-lee/TIL/blob/master/DB/DBMS.md)
+  - [Explain Plan](https://github.com/chanmi-lee/TIL/blob/master/DB/Explain-plan.md)
 
 > **Tips**
   - [Internet](https://github.com/chanmi-lee/TIL/blob/master/Tips/Internet.md)
