@@ -48,3 +48,4 @@ Today I learned :memo:
   - [useful tools](https://github.com/chanmi-lee/TIL/blob/master/Tips/useful-tools.md)
   - [Security](https://github.com/chanmi-lee/TIL/blob/master/Tips/Security.md)
   - [Conferences](https://github.com/chanmi-lee/TIL/blob/master/Tips/Conferences.md)
+  - [Road to be a good developer](https://github.com/chanmi-lee/TIL/blob/master/Tips/road-to-be-a-good-developer.md)
