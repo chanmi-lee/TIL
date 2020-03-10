@@ -20,9 +20,41 @@
 
 - URL 문법은 Scheme에 따라 달라진다.
 
+`<스킴>://<사용자이름>:<비밀번호>@<호스트>:<포트>/<경로>;<파라미터>?<질의>#<프레그먼트>`
+
+![](https://mdn.mozillademos.org/files/15766/mdn-url-protocol@x2_update.png)
+- Scheme
+  - URL을 해석하는 애플리케이션(여기선 브라우저)가 어떤 프로토콜을 사용하여 리소스에 접근하는지 알려주는 정보
+  - 알파벳으로 시작하고 대소문자를 구분하지 않는다
+
+
+![](https://mdn.mozillademos.org/files/8015/mdn-url-domain@x2.png)
+- Host
+  - 접근하려는 리소스를 호스팅하고 있는 장비
+  - `mdn.mozillademos.org`와 같은 DNS나 IP 주소로 제공한다
+
+![](https://mdn.mozillademos.org/files/8017/mdn-url-port@x2.png)
+- Port
+  - 서버가 열어놓은 네트워크 포트
+  - `http`는 80, `https`는 443
+
+![](https://mdn.mozillademos.org/files/8019/mdn-url-path@x2.png)
+- Path
+  - 접근하는 리소스가 서버의 어디에 위치하는지 알려주는 정보
+
+![](https://mdn.mozillademos.org/files/8021/mdn-url-parameters@x2.png)
+- Parameter
+  - 리소스에 접근하는데 필요한 추가 정보
+  - Key/Value 쌍의 리스트로 구분
+
+![](https://mdn.mozillademos.org/files/8023/mdn-url-anchor@x2.png)
+- Anchor / Fragment
+  - 리소스의 특정 부분을 가리킬 수 있도록 전달하는 정보 (= Bookmark)
+  - 서버로 보내지 않고 클라이언트에서만 사용된다
+
 #### 단축 URL
 
-- URL은 상대 URL과 절대 URL 두 가지로 나뉜다. 절대 URL은 리소스에 접근하는데 필요한 모든 정보를 가지고 있는 반면, 상대 URL은 모든 정보를 담고 있지는 않다.
+- URL은 상대(Relative) URL과 절대(Absolute) URL 두 가지로 나뉜다. 절대 URL은 리소스에 접근하는데 필요한 모든 정보를 가지고 있는 반면, 상대 URL은 모든 정보를 담고 있지는 않다.
 - URL을 처리하는 브라우저같은 애플리케이션은 상대 URL과 절대 URL 간의 상호 변환을 할 수 있어야 한다.
 
 ---
