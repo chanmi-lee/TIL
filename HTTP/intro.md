@@ -4,8 +4,8 @@
 
 ### HTTP: 웹의 기초
   - HTTP 개관
-  - [URL & Resource]((https://github.com/chanmi-lee/TIL/blob/master/HTTP/url-and-resource.md))
-  - URL Message
+  - [URL & Resource](https://github.com/chanmi-lee/TIL/blob/master/HTTP/url-and-resource.md)
+  - [HTTP Message](https://github.com/chanmi-lee/TIL/blob/master/HTTP/http-message.md)
   - 커넥션 관리
 
 ### HTTP Architecture
