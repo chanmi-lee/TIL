@@ -71,6 +71,51 @@ OPTIONS * HTTP/1.1
 **Headers**
 ![](https://mdn.mozillademos.org/files/13823/HTTP_Response_Headers2.png)
 
+헤더에는
+1. 특정 종류의 메시지에만 사용할 수 있는 헤더
+2. 더 일반 목적으로 사용할 수 있는 헤더
+3. 응답과 요청 메시지 양쪽 모두에서 정보를 제공하는 헤더
+
+가 있다.
+
+- 일반 헤더 (`General Headers`)
+: 클라이언트와 서버 양쪽 모두가 사용하며 바디에서 최종적으로 전송되는 데이터와는 관련이 없는 헤더
+
+ex)
+```
+date: Sat, 14 Mar 2020 15:11:45 GMT
+```
+
+- 요청 헤더 (`Request Headers`)
+: 요청 메시지를 위한 헤더로 서버에게 클라이언트가 받고자 하는 데이터의 타입이 무엇인지와 같은 부가 정보를 제공
+
+ex)
+```
+accept: */* // 서버에게 클라이언트가 자신의 요청에 대응하는 어떤 미디어 타입도 받아들일 것을 의미
+user-agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.132 Safari/537.36
+```
+
+- 응답 헤더 (`Response Headers`)
+: 응답에 대한 부가적인 정보를 제공
+
+ex)
+```
+set-cookie: SIDCC=AJi4QfE4KiZV78Lufdy1A9HCxIV-iqDxHXBMS6s6iiOx99XeypJ83gEBqFc7RaauaOCaYimSTcE; expires=Sun, 14-Mar-2021 15:50:17 GMT; path=/; domain=.youtube.com; priority=high
+```
+
+- 엔티티 헤더 (`Entity Headers`)
+: 컨텐츠 길이`Content-Length`나 MIME 타입과 같이 Entity body에 대한 자세한 정보를 포함
+
+ex)
+```
+content-type: text/html; charset=utf-8
+content-language: ko
+content-encoding: gzip
+...
+etag:
+
+```
+
 **Entity body**
 
 ---
