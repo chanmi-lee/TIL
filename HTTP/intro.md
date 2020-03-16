@@ -6,7 +6,7 @@
   - HTTP 개관
   - [URL & Resource](https://github.com/chanmi-lee/TIL/blob/master/HTTP/url-and-resource.md)
   - [HTTP Message](https://github.com/chanmi-lee/TIL/blob/master/HTTP/http-message.md)
-  - 커넥션 관리
+  - [커넥션 관리](https://github.com/chanmi-lee/TIL/blob/master/HTTP/http-connection.md)
 
 ### HTTP Architecture
   - Web server
