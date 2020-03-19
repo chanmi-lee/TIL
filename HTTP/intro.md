@@ -9,7 +9,7 @@
   - [커넥션 관리](https://github.com/chanmi-lee/TIL/blob/master/HTTP/http-connection.md)
 
 ### HTTP Architecture
-  - Web server
+  - [Web server]((https://github.com/chanmi-lee/TIL/blob/master/HTTP/web-server.md))
   - Proxy
   - Caching
   - Gateway & Application Server
