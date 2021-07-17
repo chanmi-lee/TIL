@@ -27,6 +27,9 @@ Today I learned :memo:
   - [BOM - Browser Object Model](https://github.com/chanmi-lee/TIL/blob/master/javascript/bom.md)
   - [ES6: Default and named export](https://github.com/chanmi-lee/TIL/blob/master/javascript/default-and-named-export.md)
 
+> **Nginx**
+  - [Basic Nginx](https://github.com/chanmi-lee/TIL/blob/master/nginx/basic-nginx.md)
+
 > **HTTP**
   - [HTTP: The Definitive Guide](https://github.com/chanmi-lee/TIL/blob/master/HTTP/intro.md)
 
