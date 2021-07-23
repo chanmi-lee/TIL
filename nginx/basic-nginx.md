@@ -1,5 +1,17 @@
 # Nginx
 
+Nginx는 Event-Driven 방식으로 동시접속 처리에 특화된 웹 서버이다.
+
+![](https://mdn.mozillademos.org/files/8659/web-server.svg)
+
+> [Web server : MDN](https://developer.mozilla.org/ko/docs/Learn/Common_questions/What_is_a_web_server)
+
+웹 서버는 정적 파일을 처리하는 HTTP 서버로서의 역할을 한다. 브라우저로부터 HTTP 요청을 받아 HTML, CSS, JavaScript, 이미지와 같은 요청된 리소스를 전송해준다.
+
+또한, `Reverse Proxy` 역할을 하는데, 클라이언트와 서버 간 직접 통신을 하지 않고 중계 서버인 프록시 서버를 통해 대리 통신을 수행한다. 프록시 서버를 사용하는 경우 보안, 트래픽 분산, 성능 향상 등의 장점이 있다.
+
+> `Reverse proxy` 서버를 두는 이유는 요청에 대한 버퍼링이 있기 때문인데, 클라이언트가 직접 서버에 요청하는 경우 프로세스 1개가 응답 대기(pending) 상태가 되어야만 한다. 따라서 프록시 서버를 두어 요청을 배분한다.
+
 #### 주요 디렉터리 구조와 명령어
 
 ```/etc/nginx```
@@ -120,6 +132,13 @@ server {
 }
 ```
 
+또는 `Strict-Transport-Security` 헤더를 설정해 HSTS (HTTP Strict Transport Security) 확장을 사용하는 방법도 있다. 이 경우, 브라우저는 HTTP 요청이 발생하면 내부 리다이렉트를 통해 모든 요청이 항상 HTTPS를 이용하도록 강제하게 된다.
+
+```
+// Strict-Transport-Security 헤더를 유효가간 1년 (60초 * 60분 * 24시간 * 365일 = 31,536,000초)으로 지정
+add_header Strict-Transport-Security: max-age=31536000;
+```
+
 ---
 
 #### Useful Links
@@ -129,3 +148,5 @@ server {
 + [CIDR - Wikipedia](https://ko.wikipedia.org/wiki/%EC%82%AC%EC%9D%B4%EB%8D%94_(%EB%84%A4%ED%8A%B8%EC%9B%8C%ED%82%B9))
 
 + [X-Forwarded-Proto - MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Forwarded-Proto)
+
++ [Strict-Transport-Security - MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Strict-Transport-Security)
